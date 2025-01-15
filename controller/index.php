@@ -1,5 +1,3 @@
 <?php
 
-require('./views/index.views.php');
-
-$db = new Database();
+view('index.view.php', []);
