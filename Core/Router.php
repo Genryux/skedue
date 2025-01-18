@@ -30,11 +30,11 @@ class Router {
     }
 
     public function delete($uri, $controller) {
-        return $this->add('GET', $uri, $controller);
+        return $this->add('DELETE', $uri, $controller);
     }
 
     public function patch($uri, $controller) {
-        return $this->add('GET', $uri, $controller);
+        return $this->add('PATCH', $uri, $controller);
     }
 
     public function only($key) {
@@ -52,7 +52,7 @@ class Router {
 
                 Middleware::resolve($route['middleware']);
 
-                return require base_path($route['controller']);
+                return require base_path('Http/controller/'.$route['controller']);
                 
             }
             

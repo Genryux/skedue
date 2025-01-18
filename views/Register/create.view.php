@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+
+    <?php 
+    
+        if ($errors ?? false) {
+            var_dump($errors);
+        }
+    
+    ?>
+
     registration page
 
     <form action="/create" method="POST">

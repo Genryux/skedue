@@ -17,3 +17,12 @@ function abort($code = 404) {
     require base_path("views/{$code}.php");
 
 }
+
+function redirect($path) {
+    header("Location: {$path}");
+    exit();
+}
+
+function old($key, $default = '') {
+    return Core\Session::get('old')[$key] ?? $default;
+}

@@ -6,9 +6,31 @@
     <title>Document</title>
 </head>
 <body>
+        
     <?php
-        var_dump($_SESSION) ;
+
+        use Core\Session;
+
+        if ($errors ?? false) {
+            var_dump($errors);
+        }
     ?>
-    <a href="/register">Register here!</a>
+
+    <?php if (!isset($_SESSION['user'])): ?>
+
+        <a href="/register">Register here!</a>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="email" value="<?= old('email') ?>">
+            <input type="password" name="password" placeholder="password">
+            <button>Login</button>
+        </form>
+    <?php else: ?>
+        <h1>Welcome <?= $_SESSION['user']['email']?></h1>
+        <form action="/logout" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Logout</button>
+        </form>
+    <?php endif; ?>
 </body>
 </html>
